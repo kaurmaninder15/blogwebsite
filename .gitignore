@@ -5,7 +5,7 @@ temp/
 __pycache__
 db.sqlite3
 media
-.idea/**/workspace.xml
+.idea/**/workspace.
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
