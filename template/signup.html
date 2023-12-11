@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    form {
+    width: 900px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-left: 263px;
+
+}
+</style>
+<form method="post">
+    {% csrf_token%}
+    {{form.as_p}}
+    <button type="submit"> SUBMIT </button>
+</form>
+
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
+
+{% endblock %}

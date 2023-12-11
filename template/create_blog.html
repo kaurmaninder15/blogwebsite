@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<style xmlns:color="http://www.w3.org/1999/xhtml">
+    form {
+    width: 900px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-left: 263px;
+    color: #000000
+
+}
+</style>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary" type="submit" >Submit</button>
+</form>
+
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
+{% endblock %}

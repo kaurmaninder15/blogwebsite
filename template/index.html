@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load custom_tags %}
+
+<section class="section bg-light">
+		<div class="container">
+			<div class="row align-items-stretch retro-layout">
+			{% for post_list in post_list %}
+				<div class="col-md-4">
+					<a href="{% url 'single' post_list.id %}" class="h-entry mb-30 v-height gradient">
+						<div class="featured-img" style="background-image">
+						<img src="{{post_list.image.url}}">
+						</div>
+						<div class="text">
+							<span class="date">{% current_time "%Y-%m-%d %I:%M %p" %}</span>
+							<h3>{{post_list.title}}</h3>
+							<h2>{{post_list.description}}</h2>
+							<h2>{{post_list.category}}</h2>
+						</div>
+					</a>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

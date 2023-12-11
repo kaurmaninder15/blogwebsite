@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for post in post_detail %}
+<h1>{{post.name}}</h1>
+{% endfor %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{post.title}}</h1>
+            <h3>{{post.category}}</h3>
+            <p>{{post.description}}</p>
+
+            {% if request.user in post.like_by.all %}
+            <a class="fa-solid fa-heart" href="{% url 'dislike_post' post.id %}"> </a> <br> {{post.like_by.count}}
+            {% else %}
+            <a class="fa-regular fa-heart" href="{% url 'like_post' post.id %}">{{post.like_by.count}}</a>
+            {% endif %}
+<!--            <span><i class="icon-eye"></i>{{post.like_by}}</span>-->
+        </div>
+    </div>
+
+        <form method="post" action="{% url 'post_comment' post.id %}">
+            {% csrf_token %}
+              {{ form }}
+            <button type="submit">Submit</button>
+        </form>
+
+
+        <h5> Comments </h5>
+        <ul>
+
+
+        {% for comment in post_comment %}
+    <li>
+        {{comment.name}}
+        {{comment.comment}}
+        {{comment.created_at}}
+    </li>
+        {% endfor %}
+         </ul>
+
+</div>
+{% endblock %}
